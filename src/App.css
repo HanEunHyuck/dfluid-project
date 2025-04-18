@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .content-area {
+    @apply p-20 pt-30;
+  }
+  .section-title {
+    @apply text-5xl/[72px] tracking-[-0.72px];
+  }
+}
