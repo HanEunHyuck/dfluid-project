@@ -1,56 +1,43 @@
+// react hooks
 import { useEffect, useMemo, useState } from "react";
 
+// library
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// components
 import ProfileCard from "../../components/ProfileCard";
 import InputItem from "../../components/InputItem";
-import CardList from "../../components/CardList";
+import CardItem, { Card } from "../../components/CardItem";
+import InputRange from "../../components/InputRange";
+import TabList from "../../components/TabList";
 
-// 기존 프로필 리스트
-const profileList = [
-  {
-    thumb: "./profile1.png",
-    info: "프로필1",
-    title: "Sed ut perspiciatis",
-    txt: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.",
-  },
-  {
-    thumb: "./profile2.png",
-    info: "프로필2",
-    title: "Lorem ipsum dolor",
-    txt: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.",
-  },
-  {
-    thumb: "./profile3.png",
-    info: "프로필3",
-    title: "Nemo enim ipsam",
-    txt: "Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor.",
-  },
+// data
+import profileData from "./../../data/profile.json";
+import cardData from "./../../data/card.json";
+
+// store
+import { useFilterStore } from "../../store/filterStore";
+
+// tab 값
+const tab = [
+  { txt: "All", selected: true },
+  { txt: "Asia", selected: false },
+  { txt: "Europe", selected: false },
+  { txt: "America", selected: false },
+  { txt: "Oceania", selected: false },
 ];
 
-// 카드 리스트
-const cardList = [
-  {
-    title: "Italy, Pica",
-    year: 1173,
-    thumb: "./cardImg1.png",
-    txt: "The Leaning Tower of Pisa, or simply the Tower of Pisa (torre di Pisa), is the campanile, or freestanding bell tower, of Pisa Cathedral. It is known for its nearly four-degree lean, the result of an unstable foundation. The tower is one of three structures in the Pisa's Cathedral Square (Piazza del Duomo), which includes the cathedral and Pisa Baptistry.",
-  },
-  {
-    title: "Spain, Sagrada Família",
-    year: 1882,
-    thumb: "./cardImg2.png",
-    txt: 'The Basílica i Temple Expiatori de la Sagrada Família, otherwise known as Sagrada Família, is a church under construction in the Eixample district of Barcelona, Catalonia, Spain. It is the largest unfinished Catholic church in the world. Designed by Catalan architect Antoni Gaudí (1852–1926), in 2005 his work on Sagrada Família was added to an existing (1984) UNESCO World Heritage Site, "Works of Antoni Gaudí". On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a minor basilica.',
-  },
-  {
-    title: "US, Fallingwater",
-    year: 1935,
-    thumb: "./cardImg3.png",
-    txt: "Fallingwater is a house designed by the architect Frank Lloyd Wright in 1935. Situated in the Mill Run section of Stewart township, in the Laurel Highlands of southwest Pennsylvania, about 70 miles (110 km) southeast of Pittsburgh in the United States, it is built partly over a waterfall on the Bear Run river. The house was designed to serve as a weekend retreat for Liliane and Edgar J. Kaufmann, the owner of Pittsburgh's Kaufmann's Department Store.",
-  },
-];
+// steps 값
+const steps = [1000, 1300, 1700, 2000];
 
 function HomePage() {
+  const { activeTab, activeRange } = useFilterStore();
+
+  const [filteredCardData, setFilteredCardData] = useState<Card[]>([]);
+
   // email 값
   const [email, setEmail] = useState("");
+
   // 2번째 섹션 배경이미지
   const [img, setImg] = useState("");
 
@@ -62,9 +49,19 @@ function HomePage() {
   };
 
   // 컴포넌트가 처음 마운트 될 때 한 번만 실행되고 그 값을 유지하기 위해 useMemo 사용
-  const randomProfile = useMemo(() => shuffle(profileList), []);
+  const randomProfile = useMemo(() => shuffle(profileData), []);
 
   // 컴포넌트 렌더링 이후 실행 될 항목들
+  useEffect(() => {
+    const filtered = cardData.filter((item) => {
+      const matchesTab = activeTab === "All" || item.country === activeTab;
+      const matchesRange = item.year <= activeRange;
+      return matchesTab && matchesRange;
+    });
+
+    setFilteredCardData(filtered);
+  }, [activeTab, activeRange]);
+
   useEffect(() => {
     const fetchImg = async () => {
       // localStorage에 있는 bg-img 값 가져오기
@@ -103,7 +100,7 @@ function HomePage() {
   }, []);
 
   // 이미지 호출 동안 loading 처리
-  if (!img) {
+  if (!img || randomProfile.length === 0) {
     return <p>Loading...</p>;
   }
 
@@ -162,7 +159,28 @@ function HomePage() {
         <h2 className="section-title">
           Duis tincidunt ut ligula vitae mollis.
         </h2>
-        <CardList cardList={cardList} />
+        <div className="mt-15 flex gap-5">
+          <TabList tab={tab} />
+          <InputRange steps={steps} />
+        </div>
+
+        {filteredCardData.length === 0 ? (
+          <p className="mt-[68px] text-4xl">No Result!</p>
+        ) : (
+          <Swiper
+            spaceBetween={40}
+            slidesPerView={3.8}
+            slidesOffsetBefore={80}
+            slidesOffsetAfter={80}
+            className="-mx-20! mt-[68px]"
+          >
+            {filteredCardData.map((item, index) => (
+              <SwiperSlide key={index}>
+                <CardItem card={item}></CardItem>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </section>
     </>
   );

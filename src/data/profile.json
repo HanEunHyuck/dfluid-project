@@ -1,0 +1,20 @@
+[
+  {
+    "thumb": "./profile1.png",
+    "info": "프로필1",
+    "title": "Sed ut perspiciatis",
+    "txt": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem."
+  },
+  {
+    "thumb": "./profile2.png",
+    "info": "프로필2",
+    "title": "Lorem ipsum dolor",
+    "txt": "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis."
+  },
+  {
+    "thumb": "./profile3.png",
+    "info": "프로필3",
+    "title": "Nemo enim ipsam",
+    "txt": "Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor."
+  }
+]

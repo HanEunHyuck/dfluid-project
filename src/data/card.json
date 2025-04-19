@@ -1,0 +1,37 @@
+[
+  {
+    "country": "Europe",
+    "title": "Italy, Pica",
+    "year": 1173,
+    "thumb": "./cardImg1.png",
+    "txt": "The Leaning Tower of Pisa, or simply the Tower of Pisa (torre di Pisa), is the campanile, or freestanding bell tower, of Pisa Cathedral. It is known for its nearly four-degree lean, the result of an unstable foundation. The tower is one of three structures in the Pisa's Cathedral Square (Piazza del Duomo), which includes the cathedral and Pisa Baptistry."
+  },
+  {
+    "country": "Europe",
+    "title": "Spain, Sagrada Família",
+    "year": 1882,
+    "thumb": "./cardImg2.png",
+    "txt": "The Basílica i Temple Expiatori de la Sagrada Família, otherwise known as Sagrada Família, is a church under construction in the Eixample district of Barcelona, Catalonia, Spain. It is the largest unfinished Catholic church in the world. Designed by Catalan architect Antoni Gaudí (1852–1926), in 2005 his work on Sagrada Família was added to an existing (1984) UNESCO World Heritage Site, \"Works of Antoni Gaudí\". On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a minor basilica."
+  },
+  {
+    "country": "America",
+    "title": "US, Fallingwater",
+    "year": 1935,
+    "thumb": "./cardImg3.png",
+    "txt": "Fallingwater is a house designed by the architect Frank Lloyd Wright in 1935. Situated in the Mill Run section of Stewart township, in the Laurel Highlands of southwest Pennsylvania, about 70 miles (110 km) southeast of Pittsburgh in the United States, it is built partly over a waterfall on the Bear Run river. The house was designed to serve as a weekend retreat for Liliane and Edgar J. Kaufmann, the owner of Pittsburgh's Kaufmann's Department Store."
+  },
+  {
+    "country": "Asia",
+    "title": "Japan, Osaka Castle",
+    "year": 1931,
+    "thumb": "./cardImg4.jpg",
+    "txt": "The construction of Osaka Castle (大阪城, Ōsakajō) started in 1583 on the former site of the Ishiyama Honganji Temple, which had been destroyed by Oda Nobunaga thirteen years earlier. Toyotomi Hideyoshi intended the castle to become the center of a new, unified Japan under Toyotomi rule. It was the largest castle at the time. However, a few years after Hideyoshi's death, Tokugawa troops attacked and destroyed the castle and terminated the Toyotomi lineage in 1615. Osaka Castle was rebuilt by Tokugawa Hidetada in the 1620s, but its main castle tower was struck by lightening in 1665, burnt down, and was not rebuilt during the feudal ages."
+  },
+  {
+    "country": "Asia",
+    "title": "Republic of Korea, Gyeongbokgung Palace",
+    "year": 1395,
+    "thumb": "./cardImg5.jpg",
+    "txt": "Gyeongbokgung Palace was built in 1395 as the official palace of the Joseon dynasty by Yi Seong-gye, the future King Taejo and founder of the new regime. Gyeongbokgung Palace is commonly referred to as the Northern Palace because of its location to the north, comparied to Changdeokgung Palace in the east and Gyeonghuigung Palace in the west. Gyeongbokgung Palace is arguably the most beautiful and is the largest of all five palaces. Many Joseon kings were crowned here. The premises were once destroyed by fire during the Imjin War (1592-1598). However, all of the palace buildings were later restored under the leadership of Heungseondaewongun during the reign of King Gojong. The assassination of Empress Myeongseong, however, resulted in Gyeongbokgung Palace losing its function as a royal palace, eventually witnessing the downfall of the Joseon dynasty. Gyeongbokgung Palace retains the original Gyeonghoeru Pavilion, a prime example of Joseon architecture, and the Hyangwonjeong Pavilion and pond. The sculptures in the Geunjeongjeon Hall exemplify Joseon-era sculpture techniques. The west side of the area outside Heungnyemun Gate is occupied by the National Palace Museum of Korea, while the eastern side of Hyangwonjeong Pavilion within the Gyeongbokgung Palace is occupied by the National Folk Museum of Korea."
+  }
+]
