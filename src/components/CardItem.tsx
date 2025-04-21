@@ -7,7 +7,7 @@ export type Card = {
 
 const CardItem = ({ card }: { card: Card }) => {
   return (
-    <div className="rounded-[10px] bg-[#d9d9d9] p-5">
+    <div className="rounded-[10px] bg-[#d9d9d9] p-5 font-['Montserrat']">
       <div className="flex justify-between gap-2">
         <span className="overflow-hidden font-bold tracking-[-0.24px] text-ellipsis whitespace-nowrap">
           {card.title}

@@ -1,4 +1,4 @@
-export type Profile = {
+type Profile = {
   thumb: string;
   info: string;
   title: string;
@@ -13,10 +13,10 @@ const ProfileCardItem = ({ profile }: { profile: Profile }) => {
         alt={profile.info}
         className="aspect-square w-[108px]"
       />
-      <div className="mt-10 mb-6 text-2xl/[36px] font-bold tracking-[-0.36px]">
+      <div className="mt-10 mb-6 font-['Montserrat'] text-2xl/[36px] font-bold tracking-[-0.36px]">
         {profile.title}
       </div>
-      <p className="text-lg/[30px] tracking-[-0.27px] text-[#000000cc]">
+      <p className="font-['Montserrat'] text-lg/[30px] tracking-[-0.27px] break-keep text-[#000000cc]">
         {profile.txt}
       </p>
       <button

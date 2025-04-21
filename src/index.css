@@ -1,0 +1,29 @@
+/* global */
+/* fonts */
+@font-face {
+  font-family: "Exo2";
+  font-weight: normal;
+  src: url("./fonts/Exo2-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Exo2";
+  font-weight: bold;
+  src: url("./fonts/Exo2-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: normal;
+  src: url("./fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: bold;
+  src: url("./fonts/Montserrat-Bold.ttf") format("truetype");
+}
+
+body {
+  font-family: "Exo2", sans-serif;
+}

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 type InputItemProps = {
   label: string;
-  hideLabel: boolean;
   inputId: string;
   type: string;
   value: string;
@@ -14,7 +13,6 @@ type InputItemProps = {
 
 const InputItem = ({
   label,
-  hideLabel,
   inputId,
   type,
   value,
@@ -53,10 +51,16 @@ const InputItem = ({
 
   return (
     <div className={`relative mx-auto w-full max-w-[500px] ${className}`}>
-      <label htmlFor={inputId} className="font-bold" hidden={hideLabel}>
+      <label
+        htmlFor={inputId}
+        className="font-bold tracking-[-0.24px] text-white"
+      >
         {label}
       </label>
-      <div className="relative flex justify-between gap-2 bg-[#ffffff19]">
+      <div
+        className="relative mt-4 flex justify-between gap-2 rounded-[7px] border bg-[#ffffff19]"
+        style={{ borderColor }}
+      >
         <input
           id={inputId}
           type={type}
@@ -64,8 +68,7 @@ const InputItem = ({
           value={value || ""}
           onChange={handleChange}
           onKeyDown={onKeyDown}
-          className={`w-full rounded-[7px] border p-4 pr-11 tracking-[-0.24px] text-white outline-0`}
-          style={{ borderColor }}
+          className={`w-full p-4 pr-11 tracking-[-0.24px] text-white outline-0`}
         />
         <button
           type="button"

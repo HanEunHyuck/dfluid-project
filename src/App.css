@@ -1,8 +1,9 @@
+/* app */
 @import "tailwindcss";
 
 @layer utilities {
   .content-area {
-    @apply p-20 pt-30;
+    @apply p-20 pt-30 max-[1024px]:px-16 max-[1024px]:pt-24 max-[768px]:px-10 max-[768px]:pt-16;
   }
   .section-title {
     @apply text-5xl/[72px] tracking-[-0.72px];

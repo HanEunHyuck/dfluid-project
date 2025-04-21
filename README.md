@@ -1,54 +1,37 @@
-# React + TypeScript + Vite
+<b><i><p align="center">dfluid-과제</p></i></b>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 개발 환경
 
-Currently, two official plugins are available:
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Zustand](https://img.shields.io/badge/Zustand-brown.svg?style=for-the-badge&logo=&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- HTML 5
+- JavaScript
+- React v19
+- zustand
+- Tailwind CSS v4
 
-## Expanding the ESLint configuration
+## 요구사항
+### 기능
+- [x] 마크업과 스타일시트 작성 및 프레임워크 사용의 제한은 없어요.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [x] 모든 텍스트는 지정된 폰트(webfont)와 속성을 적용하세요.
+  
+- [x] 첫번째 섹션의 3개의 프로필 카드는 페이지를 열때마다 순서가 임의로 배치되도록 구현하세요.
+ 
+- [x] 두번째 섹션의 풀블리드 배경 이미지는 아래와 같은 이미지 API를 이용해 임의의 이미지를 삽입하고, 
+같은 브라우저로 페이지를 다시 열거나 새로고침 해도 기존 이미지가 변경되지 않도록 구현하세요.
+  
+- [x] 두번째 섹션 내 ‘@input validation’ 영역을 참고하여 ‘뉴스레터 구독 양식(Subscribe to our newsletter)’의 기능을 구현하세요.
+(valid/invalid 케이스의 유효성 검증 결과 스타일과 기능을 해당 영역에 적용하세요.)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- [x] 세번째 섹션의 카드 데이터를 정의하고 2개의 필터 기능을 구현하세요.
+(결과 없을 경우 화면은 임의로 정의하세요.)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 추가 기능
+- [x] 반응형
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```

@@ -14,7 +14,7 @@ const TabItem = ({ item, onClick }: TabItemProps) => {
       type="button"
       role="tab"
       aria-selected={item.selected}
-      className={`cursor-pointer px-6 py-2 ${
+      className={`min-w-[64px] cursor-pointer px-4 py-2 ${
         item.selected ? "rounded-[25px] bg-black text-white" : ""
       }`}
       onClick={() => onClick(item.txt)}
