@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // store
 import { useFilterStore } from "../store/filterStore";
 
-const InputRange = ({ steps }: { steps: number[] }) => {
+const FilterSteps = ({ steps }: { steps: number[] }) => {
   const { setActiveRange } = useFilterStore();
   const [rangeIndex, setRangeIndex] = useState(steps.length - 1);
 
@@ -42,23 +42,12 @@ const InputRange = ({ steps }: { steps: number[] }) => {
         ))}
       </div>
 
-      <div className="absolute top-1/2 left-[6px] w-[calc(100%-12px)] -translate-y-1/2">
-        <input
-          type="range"
-          className="h-[10px] w-full appearance-none rounded-full"
-          value={rangeIndex}
-          min={0}
-          max={steps.length - 1}
-          step={1}
-          onChange={() => {}}
+      {/* 배경 bar */}
+      <div className="absolute top-1/2 left-[6px] h-[10px] w-[calc(100%-12px)] -translate-y-1/2 rounded-full bg-[#999999]">
+        <div
+          className="h-[10px] bg-black"
           style={{
-            background: `linear-gradient(
-              to right,
-              black 0%,
-              black ${(rangeIndex / (steps.length - 1)) * 100}%,
-              #999999 ${(rangeIndex / (steps.length - 1)) * 100}%,
-              #999999 100%
-            )`,
+            width: `${(rangeIndex / (steps.length - 1)) * 100}%`,
           }}
         />
       </div>
@@ -66,4 +55,4 @@ const InputRange = ({ steps }: { steps: number[] }) => {
   );
 };
 
-export default InputRange;
+export default FilterSteps;

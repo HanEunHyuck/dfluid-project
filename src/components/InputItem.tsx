@@ -8,8 +8,10 @@ type InputItemProps = {
   placeholder?: string;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
+
+// 정규식
+const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const InputItem = ({
   label,
@@ -19,12 +21,9 @@ const InputItem = ({
   placeholder,
   className,
   onChange,
-  onKeyDown,
 }: InputItemProps) => {
+  // state
   const [isValid, setIsValid] = useState(true);
-
-  const emailRegEx =
-    /^[A-Za-z0-9]([-.]?[A-Za-z0-9])*@[A-Za-z0-9]([-.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -42,12 +41,12 @@ const InputItem = ({
     }
   };
 
-  const borderColor =
+  const borderColorClass =
     type === "email" && value !== ""
       ? isValid
-        ? "#00C300"
-        : "#FF6633"
-      : "#FFFFFF";
+        ? "border-[#00C300]"
+        : "border-[#FF6633]"
+      : "border-white";
 
   return (
     <div className={`relative mx-auto w-full max-w-[500px] ${className}`}>
@@ -58,8 +57,7 @@ const InputItem = ({
         {label}
       </label>
       <div
-        className="relative mt-4 flex justify-between gap-2 rounded-[7px] border bg-[#ffffff19]"
-        style={{ borderColor }}
+        className={`${borderColorClass} relative mt-4 flex justify-between gap-2 rounded-[7px] border bg-[#ffffff19]`}
       >
         <input
           id={inputId}
@@ -67,15 +65,26 @@ const InputItem = ({
           placeholder={placeholder}
           value={value || ""}
           onChange={handleChange}
-          onKeyDown={onKeyDown}
           className={`w-full p-4 pr-11 tracking-[-0.24px] text-white outline-0`}
         />
-        <button
-          type="button"
-          className="absolute top-1/2 right-[10px] w-8 -translate-y-1/2"
-        >
-          <img src="./icon_plane.png" alt="" className="block" />
-        </button>
+        {type === "email" && (
+          <button
+            type="button"
+            className="absolute top-1/2 right-[10px] w-8 -translate-y-1/2 cursor-pointer"
+            onClick={() => {
+              if (value === "") {
+                alert("Please enter your email");
+              } else if (!isValid) {
+                alert("Please enter a valid email");
+              } else {
+                alert("Complete!");
+              }
+            }}
+          >
+            <img src="./icon_plane.png" alt="전송 아이콘" className="block" />
+            <span className="sr-only">전송</span>
+          </button>
+        )}
       </div>
       {type === "email" && value !== "" && !isValid && (
         <p className="absolute top-[calc(100%+8px)] left-4 text-left text-[#FF6633]">

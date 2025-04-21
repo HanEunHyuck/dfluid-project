@@ -8,7 +8,7 @@ import SwiperCore from "swiper";
 import ProfileCardItem from "../../components/ProfileCardItem";
 import InputItem from "../../components/InputItem";
 import CardItem, { Card } from "../../components/CardItem";
-import InputRange from "../../components/InputRange";
+import FilterSteps from "../../components/FilterSteps";
 import TabList from "../../components/TabList";
 
 // store
@@ -17,6 +17,9 @@ import { useFilterStore } from "../../store/filterStore";
 // data
 import profileData from "./../../data/profile.json";
 import cardData from "./../../data/card.json";
+
+// utils
+import shuffle from "../../utils/shuffle";
 
 // const
 // tabs 값
@@ -30,12 +33,6 @@ const TABS = [
 
 // steps 값
 const STEPS = [1000, 1300, 1700, 2000];
-
-// func
-// 1번째 섹션 순서 무작위 함수
-const shuffle = <T,>(array: T[]): T[] => {
-  return [...array].sort(() => Math.random() - 0.5);
-};
 
 function HomePage() {
   // store
@@ -53,39 +50,26 @@ function HomePage() {
   const randomProfile = useMemo(() => shuffle(profileData), []);
 
   // useEffect
-  useEffect(() => {
-    const filtered = cardData.filter((item) => {
-      const matchesTab = activeTab === "All" || item.country === activeTab;
-      const matchesRange = item.year <= activeRange;
-      return matchesTab && matchesRange;
-    });
-
-    setFilteredCardData(filtered);
-
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(0);
-    }
-  }, [activeTab, activeRange]);
-
+  // 배경 이미지
   useEffect(() => {
     const fetchImg = async () => {
-      // localStorage에 있는 bg-img 값 가져오기
+      // localStorage에 있는 bg_img 값 가져오기
       const localImg = localStorage.getItem("bg_img");
 
       // localStorage에 값이 있다면
       if (localImg) {
-        // localstorage 값으로 img를 할당하고 반환
+        // localstorage 값으로 bgImg 적용
         setBgImg(localImg);
         return;
       }
 
       // localStorage에 값이 없다면
       try {
-        // 비동기 API 호출
+        // API에서 랜덤 사진을 비동기로 가져오기
         const response = await fetch(
           "https://api.unsplash.com/photos/random?client_id=RfZSbn_rdvEPrnhslq8HRwmCwyayZg3DBo_LDcXXaTM",
         );
-        // 데이터 객체화
+        // 응답 데이터를 JSON 형식으로 파싱
         const data = await response.json();
 
         // API 호출이 정상적으로 호출 되었다면
@@ -104,7 +88,24 @@ function HomePage() {
     fetchImg();
   }, []);
 
-  // 이미지 호출, profile이미지 shuffle 되는 동안 loading 처리
+  // 필터링
+  useEffect(() => {
+    const filteredData = cardData.filter((item) => {
+      // activeTab 이 All이면 다 통과, All이 아니라면 item.country가 activeTab과 같으면 통과
+      const matchesTab = activeTab === "All" || item.country === activeTab;
+      // item.year가 actvieRange 이하인 것만 통과
+      const matchesRange = item.year <= activeRange;
+      return matchesTab && matchesRange;
+    });
+
+    setFilteredCardData(filteredData);
+
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
+    }
+  }, [activeTab, activeRange]);
+
+  // 배경 이미지 호출, profile이미지 shuffle 되는 동안 loading 처리
   if (!bgImg || randomProfile.length === 0) {
     return <p>Loading...</p>;
   }
@@ -168,7 +169,7 @@ function HomePage() {
         </h2>
         <div className="mt-15 flex gap-5 max-[1024px]:mt-8 max-[1024px]:flex-col">
           <TabList tab={TABS} />
-          <InputRange steps={STEPS} />
+          <FilterSteps steps={STEPS} />
         </div>
 
         {filteredCardData.length === 0 ? (

@@ -22,6 +22,9 @@ const ProfileCardItem = ({ profile }: { profile: Profile }) => {
       <button
         type="button"
         className="mt-6 cursor-pointer text-lg/[30px] font-bold tracking-[-0.27px] text-[#18a0fb]"
+        onClick={() => {
+          alert("Learn More Clicked!");
+        }}
       >
         LEARN MORE
       </button>

@@ -35,3 +35,5 @@
 ### 추가 기능
 - [x] 반응형
 
+### 배포 링크
+- https://dfluidtest.netlify.app/
