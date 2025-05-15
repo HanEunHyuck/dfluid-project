@@ -1,4 +1,4 @@
-<b><i><p align="center">dfluid-과제</p></i></b>
+<b><i><p align="center">dfluid</p></i></b>
 
 ## 개발 환경
 
